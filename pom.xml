@@ -6,10 +6,13 @@
 	<groupId>io.mibay.java.docs</groupId>
 	<artifactId>java-docs-searchengine</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <modules>
+        <module>integration</module>
+    </modules>
+    <packaging>pom</packaging>
 
 	<name>java-docs-searchengine</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Java Docs Search Engine</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -25,6 +28,13 @@
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>io.mibay.java.docs</groupId>
+			<artifactId>integration</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
@@ -37,7 +47,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jersey</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

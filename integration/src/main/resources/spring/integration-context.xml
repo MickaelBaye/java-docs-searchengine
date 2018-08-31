@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:integration="http://www.springframework.org/schema/integration"
+       xmlns:file="http://www.springframework.org/schema/integration/file"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/integration
+			http://www.springframework.org/schema/integration/spring-integration.xsd
+			http://www.springframework.org/schema/integration/file
+			http://www.springframework.org/schema/integration/file/spring-integration-file.xsd">
+
+    <!--<file:inbound-channel-adapter id="javaDocsDirIn" directory="file:D:\Users\mibaye\Dev\Docs\Java\jdk-8u181-docs-all\docs"-->
+                                  <!--prevent-duplicates="true" filename-pattern="*.html">-->
+        <!--<integration:poller fixed-delay="1000" />-->
+    <!--</file:inbound-channel-adapter>-->
+
+    <!--<integration:transformer id="fileToObjectTransformer" ref="testTransformerBean" input-channel="javaDocsDirIn"-->
+                     <!--method="transform" output-channel="javaDocsDirOut"/>-->
+    <!--<bean id="testTransformerBean" class="io.mibay.java.docs.javadocssearchengine.integration.transformers.TestTransformer" />-->
+
+    <!--<file:outbound-channel-adapter id="javaDocsDirOut" directory="file:D:\Users\mibaye\Dev\Docs\Java\processed"-->
+                                   <!--delete-source-files="false"/>-->
+
+    <!--<bean id="fileProcessor" class="io.mibay.java.docs.javadocssearchengine.integration.processors.FileProcessor" />-->
+
+</beans>
