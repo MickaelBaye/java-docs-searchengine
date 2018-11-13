@@ -1,8 +1,4 @@
 /target/
-/batch/target/
-/model/target/
-/service/target/
-/logs/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
