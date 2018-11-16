@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +28,7 @@ public class DataLoader implements InitializingBean {
     private static final String JAVA_DOCS_DIR = "D:\\Users\\mibaye\\Dev\\Docs\\Java\\jdk-8u181-docs-all";
 
     @Autowired
-    private ElasticsearchTemplate elasticsearchTemplate;
+    private ElasticsearchOperations elasticsearchOperations;
 
     @Autowired
     private JavaDocsBusiness javaDocsBusiness;
@@ -38,7 +39,8 @@ public class DataLoader implements InitializingBean {
      */
     public void afterPropertiesSet() throws Exception {
         LOGGER.debug("DataLoader.afterPropertiesSet()");
-        initializeData();
+        // initializeIndex();
+        // initializeData();
     }
 
     /**
@@ -46,7 +48,7 @@ public class DataLoader implements InitializingBean {
      * @throws Exception
      */
     private void initializeIndex() throws Exception {
-        elasticsearchTemplate.createIndex(JavaDoc.class);
+        elasticsearchOperations.createIndex(JavaDoc.class);
     }
 
     /**

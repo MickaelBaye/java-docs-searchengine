@@ -9,7 +9,7 @@
 
     <import resource="classpath:spring/batch-context.xml" />
 
-    <context:component-scan base-package="io.mibay.java.docs.javadocssearchengine.service" />
+    <context:component-scan base-package="io.mibay.java.docs.javadocssearchengine.service,io.mibay.java.docs.javadocssearchengine.service.controllers" />
     <context:annotation-config />
 
 </beans>

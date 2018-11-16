@@ -28,6 +28,7 @@
         <slf4j.version>1.7.25</slf4j.version>
         <commons-io.version>2.6</commons-io.version>
         <spring-data-es.version>3.1.2.RELEASE</spring-data-es.version>
+        <elasticsearch.version>6.2.2</elasticsearch.version>
 	</properties>
 
     <dependencyManagement>
@@ -55,6 +56,18 @@
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-elasticsearch</artifactId>
                 <version>${spring-data-es.version}</version>
+            </dependency>
+
+            <!--Elasticsearch -->
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>transport</artifactId>
+                <version>${elasticsearch.version}</version>
             </dependency>
 
             <!--SLF4J-->

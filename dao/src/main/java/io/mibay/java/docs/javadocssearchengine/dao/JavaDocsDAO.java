@@ -1,6 +1,8 @@
 package io.mibay.java.docs.javadocssearchengine.dao;
 
+import io.mibay.java.docs.javadocssearchengine.dao.repositories.elasticsearch.JavaDocsRepository;
 import io.mibay.java.docs.javadocssearchengine.model.JavaDoc;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -10,27 +12,26 @@ import java.util.Optional;
 @Repository
 public class JavaDocsDAO implements DAOInterface<JavaDoc> {
 
-    private List<JavaDoc> javaDocList = new ArrayList<>();
+    @Autowired
+    private JavaDocsRepository javaDocsRepository;
 
     @Override
     public JavaDoc save(JavaDoc entity) {
-        javaDocList.add(entity);
-        return entity;
+        return javaDocsRepository.save(entity);
     }
 
     @Override
     public Optional<JavaDoc> findById(String id) {
-        return javaDocList.stream().filter(javaDoc -> javaDoc.getId().equals(id))
-                .findFirst();
+        return javaDocsRepository.findById(id);
     }
 
     @Override
     public Iterable<JavaDoc> findAll() {
-        return javaDocList;
+        return javaDocsRepository.findAll();
     }
 
     @Override
     public void delete(JavaDoc entity) {
-        javaDocList.remove(entity);
+        javaDocsRepository.delete(entity);
     }
 }

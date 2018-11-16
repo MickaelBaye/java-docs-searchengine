@@ -17,13 +17,19 @@ public class JavaDocsBusiness {
     @Autowired
     private JavaDocsDAO javaDocsDAO;
 
+    /**
+     * TODO documentation
+     * @param entity
+     * @return
+     * @throws Exception
+     */
     public JavaDoc save(JavaDoc entity) throws Exception {
         JavaDoc javaDoc;
         if (entity == null) {
             throw new IllegalArgumentException("Can't save null object");
         }
         try {
-            LOGGER.debug("Saving: {}", entity.toString());
+            // LOGGER.debug("Saving: {}", entity.toString());
             javaDoc = javaDocsDAO.save(entity);
         } catch (Exception e) {
             throw new Exception("Error on java document save", e);
@@ -31,6 +37,12 @@ public class JavaDocsBusiness {
         return javaDoc;
     }
 
+    /**
+     * TODO documentation
+     * @param id
+     * @return
+     * @throws Exception
+     */
     public Optional<JavaDoc> findById(String id) throws Exception {
         Optional<JavaDoc> javaDoc;
         if (id == null || id.isEmpty()) {
@@ -45,10 +57,19 @@ public class JavaDocsBusiness {
         return javaDoc;
     }
 
+    /**
+     * TODO documentation
+     * @return
+     */
     public Iterable<JavaDoc> findAll() {
         return javaDocsDAO.findAll();
     }
 
+    /**
+     * TODO documentation
+     * @param entity
+     * @throws Exception
+     */
     public void delete(JavaDoc entity) throws Exception {
         Optional<JavaDoc> javaDoc;
         if (entity == null) {

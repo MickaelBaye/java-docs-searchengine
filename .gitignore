@@ -2,6 +2,7 @@
 /batch/target/
 /model/target/
 /service/target/
+/business/target/
 /dao/target/
 /logs/
 !.mvn/wrapper/maven-wrapper.jar
