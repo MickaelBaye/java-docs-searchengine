@@ -9,12 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>java-docs-searchengine-dao</artifactId>
+    <artifactId>java-docs-searchengine-business</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>io.mibay.java.docs</groupId>
-            <artifactId>java-docs-searchengine-model</artifactId>
+            <artifactId>java-docs-searchengine-dao</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
@@ -35,7 +35,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>

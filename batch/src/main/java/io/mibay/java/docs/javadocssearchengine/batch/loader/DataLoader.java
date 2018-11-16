@@ -1,5 +1,6 @@
 package io.mibay.java.docs.javadocssearchengine.batch.loader;
 
+import io.mibay.java.docs.javadocssearchengine.business.JavaDocsBusiness;
 import io.mibay.java.docs.javadocssearchengine.dao.JavaDocsDAO;
 import io.mibay.java.docs.javadocssearchengine.model.JavaDoc;
 import org.apache.commons.io.FileUtils;
@@ -9,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -25,20 +27,33 @@ public class DataLoader implements InitializingBean {
     private static final String JAVA_DOCS_DIR = "D:\\Users\\mibaye\\Dev\\Docs\\Java\\jdk-8u181-docs-all";
 
     @Autowired
-    private JavaDocsDAO javaDocsDAO;
+    private ElasticsearchTemplate elasticsearchTemplate;
+
+    @Autowired
+    private JavaDocsBusiness javaDocsBusiness;
 
     /**
      * TODO documentation
+     * @throws Exception
      */
-    public void afterPropertiesSet() {
+    public void afterPropertiesSet() throws Exception {
         LOGGER.debug("DataLoader.afterPropertiesSet()");
         initializeData();
     }
 
     /**
      * TODO documentation
+     * @throws Exception
      */
-    private void initializeData() {
+    private void initializeIndex() throws Exception {
+        elasticsearchTemplate.createIndex(JavaDoc.class);
+    }
+
+    /**
+     * TODO documentation
+     * @throws Exception
+     */
+    private void initializeData() throws Exception {
         LOGGER.debug("Start initializing data...");
 
         Integer count = 0;
@@ -55,9 +70,8 @@ public class DataLoader implements InitializingBean {
             javaDoc.setPath(filePath);
             javaDoc.setTitle(title);
 
-            javaDocsDAO.save(javaDoc);
+            javaDoc = javaDocsBusiness.save(javaDoc);
 
-            LOGGER.debug(" === {}", javaDoc.toString());
             count++;
         }
 

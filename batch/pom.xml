@@ -15,7 +15,7 @@
 
         <dependency>
             <groupId>io.mibay.java.docs</groupId>
-            <artifactId>java-docs-searchengine-dao</artifactId>
+            <artifactId>java-docs-searchengine-business</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

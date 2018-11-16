@@ -11,6 +11,7 @@
         <module>batch</module>
         <module>service</module>
         <module>dao</module>
+        <module>business</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -26,6 +27,7 @@
         <spring.version>5.0.1.RELEASE</spring.version>
         <slf4j.version>1.7.25</slf4j.version>
         <commons-io.version>2.6</commons-io.version>
+        <spring-data-es.version>3.1.2.RELEASE</spring-data-es.version>
 	</properties>
 
     <dependencyManagement>
@@ -46,6 +48,13 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-context-support</artifactId>
                 <version>${spring.version}</version>
+            </dependency>
+
+            <!--Spring Data ES-->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-elasticsearch</artifactId>
+                <version>${spring-data-es.version}</version>
             </dependency>
 
             <!--SLF4J-->
