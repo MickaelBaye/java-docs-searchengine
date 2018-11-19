@@ -29,6 +29,7 @@
         <commons-io.version>2.6</commons-io.version>
         <spring-data-es.version>3.1.2.RELEASE</spring-data-es.version>
         <elasticsearch.version>6.2.2</elasticsearch.version>
+        <jsoup.version>1.11.3</jsoup.version>
 	</properties>
 
     <dependencyManagement>
@@ -83,6 +84,14 @@
                 <artifactId>commons-io</artifactId>
                 <version>${commons-io.version}</version>
             </dependency>
+
+            <!-- jsoup HTML parser library @ https://jsoup.org/ -->
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

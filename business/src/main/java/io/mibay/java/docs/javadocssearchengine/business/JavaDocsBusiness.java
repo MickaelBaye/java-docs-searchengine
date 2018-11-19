@@ -24,13 +24,13 @@ public class JavaDocsBusiness {
      * @throws Exception
      */
     public JavaDoc save(JavaDoc entity) throws Exception {
-        JavaDoc javaDoc;
+        JavaDoc javaDoc = null;
         if (entity == null) {
             throw new IllegalArgumentException("Can't save null object");
         }
         try {
-            // LOGGER.debug("Saving: {}", entity.toString());
-            javaDoc = javaDocsDAO.save(entity);
+            LOGGER.debug("Saving: {}", entity.toString());
+            // javaDoc = javaDocsDAO.save(entity);
         } catch (Exception e) {
             throw new Exception("Error on java document save", e);
         }
