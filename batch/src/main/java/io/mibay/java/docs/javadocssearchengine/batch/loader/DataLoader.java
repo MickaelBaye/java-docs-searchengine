@@ -41,7 +41,7 @@ public class DataLoader implements InitializingBean {
      */
     public void afterPropertiesSet() throws Exception {
         LOGGER.debug("DataLoader.afterPropertiesSet()");
-        // initializeIndex();
+        initializeIndex();
         initializeData();
     }
 
