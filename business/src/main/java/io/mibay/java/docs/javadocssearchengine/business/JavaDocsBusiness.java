@@ -2,6 +2,7 @@ package io.mibay.java.docs.javadocssearchengine.business;
 
 import io.mibay.java.docs.javadocssearchengine.dao.JavaDocsDAO;
 import io.mibay.java.docs.javadocssearchengine.model.JavaDoc;
+import org.elasticsearch.action.search.SearchType;
 import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.slf4j.Logger;
@@ -34,17 +35,15 @@ public class JavaDocsBusiness {
      * @throws Exception
      */
     public JavaDoc save(JavaDoc entity) throws Exception {
-        JavaDoc javaDoc;
         if (entity == null) {
             throw new IllegalArgumentException("Can't save null object");
         }
         try {
             LOGGER.debug("Saving: {}", entity.toString());
-            javaDoc = javaDocsDAO.save(entity);
+            return javaDocsDAO.save(entity);
         } catch (Exception e) {
             throw new Exception("Error on java document save", e);
         }
-        return javaDoc;
     }
 
     /**
@@ -54,17 +53,16 @@ public class JavaDocsBusiness {
      * @throws Exception
      */
     public Optional<JavaDoc> findById(String id) throws Exception {
-        Optional<JavaDoc> javaDoc;
+
         if (id == null || id.isEmpty()) {
             throw new IllegalArgumentException("ID is null or empty");
         }
         try {
             LOGGER.debug("Get by ID: {}", id);
-            javaDoc = javaDocsDAO.findById(id);
+            return javaDocsDAO.findById(id);
         } catch (Exception e) {
             throw new Exception("Error on java documentation find", e);
         }
-        return javaDoc;
     }
 
     /**
@@ -81,7 +79,7 @@ public class JavaDocsBusiness {
      * @throws Exception
      */
     public void delete(JavaDoc entity) throws Exception {
-        Optional<JavaDoc> javaDoc;
+
         if (entity == null) {
             throw new IllegalArgumentException("Can't delete null object");
         }
@@ -100,13 +98,14 @@ public class JavaDocsBusiness {
      * @throws Exception
      */
     public List<JavaDoc> searchByTitle(String title) throws Exception {
-        List<JavaDoc> javaDocList = null;
+
         if (title == null || title.isEmpty()) {
             throw new IllegalArgumentException("Can't search with empty or null title");
         }
         try {
             SearchQuery searchQuery = new NativeSearchQueryBuilder()
                     .withQuery(new MatchQueryBuilder("title", title))
+                    .withSearchType(SearchType.DFS_QUERY_THEN_FETCH)
                     .build();
             return elasticsearchOperations.queryForList(searchQuery, JavaDoc.class);
         } catch (Exception e) {
